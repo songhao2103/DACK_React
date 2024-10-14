@@ -1,0 +1,101 @@
+.courseC.rows {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: $Box-shadow1;
+  border-radius: 20px;
+
+  .image {
+    img {
+      border-radius: 20px;
+      height: 100%;
+    }
+  }
+  .content {
+    padding: 20px;
+    width: 540px;
+
+    .desc {
+      @include desc_gray;
+    }
+
+    .title_h4 {
+      @include title_h4;
+      margin-top: 12px;
+    }
+
+    .info {
+      display: flex;
+      gap: 24px;
+      margin-top: 16px;
+
+      .item {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        .icon {
+          color: $Primary;
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 83px;
+
+      .price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .desc {
+          @include desc_black;
+        }
+
+        .old.sale {
+          text-decoration: line-through;
+          color: $Dark_gray;
+        }
+
+        .new.free {
+          color: green;
+        }
+      }
+
+      .view_course {
+        font-weight: 600;
+        color: $Black;
+        cursor: pointer;
+
+        &:hover {
+          color: $Primary;
+        }
+
+        &:active {
+          transform: scale(0.97);
+        }
+      }
+    }
+  }
+}
+
+.courseC.table {
+  @extend .courseC, .rows;
+  display: inline;
+  box-shadow: $Box-shadow1;
+  border-radius: 20px;
+  width: 480px;
+  // background-color: red;
+  height: 480px;
+
+  .image img {
+    width: 480px;
+  }
+
+  .bottom {
+    width: 450px;
+    transform: translateY(-70px);
+  }
+}

@@ -1,0 +1,53 @@
+@import "./curriculum";
+@import "./instructor";
+@import "./FAQs";
+@import "./reviews.scss";
+
+.course_content {
+  width: 790px;
+  padding: 30px;
+  margin: 50px 0;
+
+  .nav_content ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+
+    .title_h4 {
+      @include title_h4;
+      cursor: pointer;
+
+      &:hover {
+        color: $Primary;
+      }
+
+      &:active {
+        transform: scale(0.97);
+      }
+    }
+
+    .title_h4.active {
+      color: $Primary;
+    }
+  }
+
+  .box_overview {
+    .overview {
+      .desc {
+        @include desc_gray;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  .box_content {
+    display: none;
+  }
+
+  .box_content.active {
+    display: block;
+  }
+}

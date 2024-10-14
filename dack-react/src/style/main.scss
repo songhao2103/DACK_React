@@ -1,0 +1,19 @@
+// variables
+@import "./variables&mixin/variables.scss";
+
+// mixin
+@import "./variables&mixin/mixin.scss";
+
+//Component======================================
+//header
+@import "../header/header.scss";
+//footer
+@import "../footer/footer.scss";
+//homePage
+@import "../homePage/homPage.scss";
+
+//CoursesPage
+@import "../coursesPage/coursesPage.scss";
+
+//InfoCoursePage
+@import "../infoCoursePage/infoCoursePage.scss";
