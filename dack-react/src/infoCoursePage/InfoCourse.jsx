@@ -1,9 +1,12 @@
-import { listDataCourses } from "../listDataCourses";
-const InfoCourse = () => {
-  const course = listDataCourses[0];
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
+const InfoCourse = () => {
   //Tính giá của course
+  const course = useSelector((state) => state.courseViewed);
   const displayPrice = ((course.price * (100 - course.sale)) / 100).toFixed(1);
+  console.log(course);
+
   return (
     <div className="info_course">
       <div className="info">
@@ -54,7 +57,9 @@ const InfoCourse = () => {
               </p>
             )}
           </div>
-          <button className="btn_primary">Start Now</button>
+          <Link to={"/check-out"} className="btn_primary">
+            Start Now
+          </Link>
         </div>
       </div>
     </div>

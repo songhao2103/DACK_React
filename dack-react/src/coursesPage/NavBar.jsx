@@ -1,19 +1,50 @@
+import { useDispatch, useSelector } from "react-redux";
+import {
+  actionSelectPrice,
+  actionSelectInstructors,
+} from "../redux-store/actions/actions";
+
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const seclectPrice = useSelector((state) => state.coursePrice); //lấy các trạng thái của các ô input phần price
+  const seclectInstructor = useSelector((state) => state.courseInstructors); //lấy các trạng thái của các ô input phần price
+
+  //Hàm xử lí khi click vào các ô input phần price
+  const handleClickInputPrice = (key) => {
+    dispatch({
+      type: actionSelectPrice.type,
+      payload: {
+        key,
+      },
+    });
+  };
+
+  //Hàm xử lí khi click vào các ô input instructors
+
+  const handleClickInputInstructors = (key) => {
+    dispatch({
+      type: actionSelectInstructors.type,
+      payload: {
+        key,
+      },
+    });
+  };
+
   return (
     <div className="nav_bar">
       <ul className="type">
         <div className="title_h4">Course category</div>
         <div className="option">
           <input type="checkbox" />
-          <p className="desc">Commercial 15</p>
+          <p className="desc">Commercial </p>
         </div>
         <div className="option">
           <input type="checkbox" />
-          <p className="desc">Office 15</p>
+          <p className="desc">Office </p>
         </div>
         <div className="option">
           <input type="checkbox" />
-          <p className="desc">Shop 15</p>
+          <p className="desc">Shop </p>
         </div>
         <div className="option">
           <input type="checkbox" />
@@ -21,30 +52,47 @@ const NavBar = () => {
         </div>
         <div className="option">
           <input type="checkbox" />
-          <p className="desc">Academy 15</p>
+          <p className="desc">Academy </p>
         </div>
         <div className="option">
           <input type="checkbox" />
-          <p className="desc">Single family home 15</p>
+          <p className="desc">Single family home </p>
         </div>
         <div className="option">
           <input type="checkbox" />
-          <p className="desc">Studio 15</p>
+          <p className="desc">Studio </p>
         </div>
         <div className="option">
           <input type="checkbox" />
-          <p className="desc">University 15</p>
+          <p className="desc">University </p>
         </div>
       </ul>
 
       <ul className="type">
         <div className="title_h4">Instructors</div>
         <div className="option">
-          <input type="checkbox" />
-          <p className="desc">Kenny White 15</p>
+          <input
+            type="checkbox"
+            checked={seclectInstructor.all}
+            onChange={() => handleClickInputInstructors("all")}
+          />
+          <p className="desc">All</p>
+        </div>
+
+        <div className="option">
+          <input
+            type="checkbox"
+            checked={seclectInstructor.kennyWhite}
+            onChange={() => handleClickInputInstructors("kennyWhite")}
+          />
+          <p className="desc">Kenny White </p>
         </div>
         <div className="option">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={seclectInstructor.johnDoe}
+            onChange={() => handleClickInputInstructors("johnDoe")}
+          />
           <p className="desc">John Doe</p>
         </div>
       </ul>
@@ -53,23 +101,43 @@ const NavBar = () => {
         <ul className="type">
           <div className="title_h4">Price</div>
           <div className="option">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={() => handleClickInputPrice("all")}
+              checked={seclectPrice.all}
+            />
             <p className="desc">All</p>
           </div>
           <div className="option">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={() => handleClickInputPrice("free")}
+              checked={seclectPrice.free}
+            />
             <p className="desc">Free</p>
           </div>
           <div className="option">
-            <input type="checkbox" />
-            <p className="desc">Paid</p>
+            <input
+              type="checkbox"
+              onChange={() => handleClickInputPrice("increase")}
+              checked={seclectPrice.increase}
+            />
+            <p className="desc">Increase</p>
+          </div>
+          <div className="option">
+            <input
+              type="checkbox"
+              onChange={() => handleClickInputPrice("reduce")}
+              checked={seclectPrice.reduce}
+            />
+            <p className="desc">Reduce</p>
           </div>
         </ul>
       </ul>
 
       <ul className="type">
         <ul className="type">
-          <div className="title_h4">Price</div>
+          <div className="title_h4">Rating</div>
           <div className="option">
             <input type="checkbox" />
             <div className="list_star">
@@ -127,7 +195,7 @@ const NavBar = () => {
           <div className="title_h4">Level</div>
           <div className="option">
             <input type="checkbox" />
-            <p className="desc">All levels 15</p>
+            <p className="desc">All levels </p>
           </div>
           <div className="option">
             <input type="checkbox" />

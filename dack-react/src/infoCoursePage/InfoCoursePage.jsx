@@ -1,5 +1,6 @@
 import CourseContent from "./CourseContent";
 import InfoCourse from "./InfoCourse";
+// import { listDataCourses } from "../listDataCourses";
 
 const InfoCoursePage = () => {
   return (

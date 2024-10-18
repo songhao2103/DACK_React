@@ -1,9 +1,20 @@
+import { NavLink } from "react-router-dom";
 const Navigations = () => {
   return (
     <div className="navigations">
       <ul className="list_menus">
-        <li className="item_menu">Home</li>
-        <li className="item_menu">Courses</li>
+        <NavLink
+          to="/"
+          className={({ isActive }) => `item_menu ${isActive ? "active" : ""}`}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/courses_page"
+          className={({ isActive }) => `item_menu ${isActive ? "active" : ""}`}
+        >
+          Courses
+        </NavLink>
         <li className="item_menu">Blog</li>
         <li className="item page">
           <div className="box_page">

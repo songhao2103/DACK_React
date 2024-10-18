@@ -2,12 +2,10 @@
   display: flex;
   gap: 20px;
   align-items: center;
-  overflow: hidden;
-  padding-left: 60px;
 
   .sign {
     margin-right: -250px;
-    span {
+    .desc {
       @include desc_black;
       font-weight: 500;
       cursor: pointer;
@@ -22,10 +20,70 @@
     }
   }
 
+  .box_user {
+    display: flex;
+    position: relative;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      color: $Dark_gray;
+      border: 2px solid $Dark_gray;
+      cursor: pointer;
+
+      &:hover {
+        color: $Primary;
+        border-color: $Primary;
+      }
+
+      &:active {
+        transform: scale(0.97);
+      }
+    }
+
+    .options_user {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      background-color: rgba($color: #000000, $alpha: 0.2);
+      border-radius: 10px;
+      position: absolute;
+      left: -100px;
+      top: 40px;
+
+      .option {
+        cursor: pointer;
+        @include desc_gray;
+
+        &:hover {
+          color: $Primary;
+          font-size: 2rem;
+        }
+
+        &:active {
+          transform: scale(0.97);
+        }
+      }
+      p.desc {
+        margin-bottom: 10px;
+        @include desc_black;
+      }
+    }
+  }
+
+  .sign.active {
+    z-index: 100;
+  }
+
   .search {
     display: flex;
     align-items: center;
     position: relative;
+    overflow: hidden;
 
     input {
       padding: 10px 12px;
@@ -39,6 +97,7 @@
     input.active {
       transform: translateX(35px);
     }
+
     .icon {
       width: 35px;
       height: 35px;

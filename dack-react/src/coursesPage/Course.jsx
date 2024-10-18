@@ -1,6 +1,23 @@
+import { useDispatch } from "react-redux";
+import { actionCourseViewed } from "../redux-store/actions/actions";
+import { Link } from "react-router-dom";
+
 const Course = ({ course, changeArrangement }) => {
+  const dispatch = useDispatch();
+
   //Tính giá tiền sau khi giả giá
   const displayPrice = ((course.price * (100 - course.sale)) / 100).toFixed(1);
+
+  //Hàm xử lí khi click vào view more
+  const handleCourseViewed = (course) => {
+    dispatch({
+      type: actionCourseViewed.type,
+      payload: {
+        courseViewed: course,
+      },
+    });
+  };
+
   return (
     <div className={`courseC ${changeArrangement}`}>
       <div className="image">
@@ -53,7 +70,13 @@ const Course = ({ course, changeArrangement }) => {
               </p>
             )}
           </div>
-          <p className="view_course desc">View More</p>
+          <Link
+            to={"/info_course"}
+            className="view_course desc"
+            onClick={() => handleCourseViewed(course)}
+          >
+            View More
+          </Link>
         </div>
       </div>
     </div>

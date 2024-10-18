@@ -1,14 +1,30 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { actionCourseViewed } from "../redux-store/actions/actions";
 import { listDataCourses } from "../listDataCourses";
 import Course from "./Course";
 
 const ListCourses = () => {
-  const [clickAllCourses, setClickAllCourses] = useState(false);
+  const [clickAllCourses, setClickAllCourses] = useState(false); // lưu trạng thái của nút xem tất cả courses
+  const dispath = useDispatch();
 
+  //Hàm xử lí khi click vào view all
   const handleClickAllCourses = () => {
     setClickAllCourses(!clickAllCourses);
   };
 
+  //Hàm xử lí khi click vào course
+  const handleViewCourse = (course) => {
+    dispath({
+      type: actionCourseViewed.type,
+      payload: {
+        courseViewed: course,
+      },
+    });
+  };
+
+  //Return========================================================
   return (
     <div className="box_list_courses">
       <div className="top">
@@ -24,7 +40,13 @@ const ListCourses = () => {
       </div>
       <div className={`list_courses ${clickAllCourses ? "all" : ""}`}>
         {listDataCourses.map((course, index) => (
-          <Course key={index} course={course}></Course>
+          <Link
+            key={index}
+            to="/info_course"
+            onClick={() => handleViewCourse(course)}
+          >
+            <Course course={course}></Course>
+          </Link>
         ))}
       </div>
     </div>

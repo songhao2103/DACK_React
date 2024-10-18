@@ -7,6 +7,7 @@
   width: 790px;
   padding: 30px;
   margin: 50px 0;
+  position: relative;
 
   .nav_content ul {
     width: 100%;
@@ -34,20 +35,38 @@
     }
   }
 
-  .box_overview {
-    .overview {
-      .desc {
-        @include desc_gray;
-        margin-bottom: 20px;
-      }
+  .overview {
+    .desc {
+      @include desc_gray;
+      margin-bottom: 20px;
     }
   }
 
-  .box_content {
-    display: none;
-  }
+  .alert {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba($color: $Primary, $alpha: 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    .desc {
+      @include desc_gray;
+      font-size: 2.2rem;
+      text-align: center;
+      color: white;
+    }
 
-  .box_content.active {
-    display: block;
+    .btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 30px;
+      justify-content: center;
+
+      .btn_primary {
+        @include btn_white;
+      }
+    }
   }
 }
