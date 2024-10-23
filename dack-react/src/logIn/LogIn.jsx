@@ -30,35 +30,39 @@ const logInReducer = (state, action) => {
       let newCheckedError = { ...state.checkedError };
       let newTextError = { ...state.textError };
 
+      //check lỗi email
       if (!state.formData.email) {
         (newCheckedError.email = true),
           (newTextError.email = "Email không được để trống");
       } else {
         if (
-          !action.payload.listUsers.find(
-            (user) => user.account.email === state.formData.email
-          )
+          action.payload.listUsers === null
+            ? true
+            : !action.payload.listUsers.find(
+                (user) => user.account.email === state.formData.email
+              )
         ) {
           (newCheckedError.email = true),
             (newTextError.email = "Email không đúng, thử lại");
         } else {
           newCheckedError.email = false;
-        }
-      }
 
-      if (!state.formData.password) {
-        (newCheckedError.password = true),
-          (newTextError.password = "Password không được để trống");
-      } else {
-        if (
-          !action.payload.listUsers.find(
-            (user) => user.account.password === state.formData.password
-          )
-        ) {
-          (newCheckedError.password = true),
-            (newTextError.password = "Password không đúng, thử lại");
-        } else {
-          newCheckedError.password = false;
+          //check lỗi password
+          if (!state.formData.password) {
+            (newCheckedError.password = true),
+              (newTextError.password = "Password không được để trống");
+          } else {
+            if (
+              !action.payload.listUsers.find(
+                (user) => user.account.password === state.formData.password
+              )
+            ) {
+              (newCheckedError.password = true),
+                (newTextError.password = "Password không đúng, thử lại");
+            } else {
+              newCheckedError.password = false;
+            }
+          }
         }
       }
 

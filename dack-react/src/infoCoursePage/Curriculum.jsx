@@ -1,4 +1,19 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
 const Curriculum = () => {
+  const lessonsOfCourse = useSelector((state) => state.courseViewed.lessons); // lấy ra danh sách các bài học của course đang được xem
+  const [hiddenFile, setHiddenFile] = useState(
+    Array(lessonsOfCourse.length).fill(false)
+  );
+
+  //hàm xử lý hiển thị danh sách file của từng lesson
+  const handleHiddenFile = (value) => {
+    const newHiddenFile = [...hiddenFile];
+    newHiddenFile[value] = !newHiddenFile[value];
+    setHiddenFile(newHiddenFile);
+  };
+
   return (
     <div className="curriculum">
       <div className="top">
@@ -9,35 +24,19 @@ const Curriculum = () => {
         </p>
       </div>
 
-      <div className="list_chapter">
-        <div className="chapter">
-          <div className="title_h5">Lessons chapter 1</div>
-          <div className="right">
-            <div className="lessons desc">3 Lessons</div>
-            <div className="total_time desc">45 minnute</div>
+      <div className="list_lessons">
+        {lessonsOfCourse.map((lesson, index) => (
+          <div className="lesson" key={lesson.id}>
+            <p className="title_h5" onClick={() => handleHiddenFile(index)}>
+              Lesson {index + 1}
+            </p>
+            {hiddenFile[index] && (
+              <div className="box_file">
+                <p className="desc">{lesson.pdf.slice(29)}</p>
+              </div>
+            )}
           </div>
-        </div>
-        <div className="chapter">
-          <div className="title_h5">Lessons chapter 2</div>
-          <div className="right">
-            <div className="lessons desc">3 Lessons</div>
-            <div className="total_time desc">45 minnute</div>
-          </div>
-        </div>
-        <div className="chapter">
-          <div className="title_h5">Lessons chapter 3</div>
-          <div className="right">
-            <div className="lessons desc">3 Lessons</div>
-            <div className="total_time desc">45 minnute</div>
-          </div>
-        </div>
-        <div className="chapter">
-          <div className="title_h5">Lessons chapter 4</div>
-          <div className="right">
-            <div className="lessons desc">3 Lessons</div>
-            <div className="total_time desc">45 minnute</div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

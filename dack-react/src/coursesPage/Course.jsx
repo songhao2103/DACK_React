@@ -55,7 +55,7 @@ const Course = ({ course, changeArrangement }) => {
             <div className="icon">
               <i className="fa-solid fa-clipboard"></i>
             </div>
-            <p className="desc">{course.lessons} Lesson</p>
+            <p className="desc">{course.lessons.length} Lesson</p>
           </div>
         </div>
 

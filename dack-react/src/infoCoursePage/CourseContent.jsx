@@ -32,10 +32,10 @@ const CourseContent = () => {
                 (course) => course.id === courseViewed.id
               );
         //Nếu đã đăng ký tài khoản
-        if (findCourse !== null) {
-          let newHiddenContent = [...hiddenContent];
-          newHiddenContent[1] = true;
-          setHiddenContent(newHiddenContent);
+        if (findCourse !== null && findCourse !== undefined) {
+          setHiddenContent((prevHiddenContent) =>
+            prevHiddenContent.map((_, index) => index === 1)
+          );
           setHiddenAlert("");
         } else {
           setHiddenAlert("not course");
@@ -50,7 +50,7 @@ const CourseContent = () => {
     }
   };
 
-  //Hàm click các lựa chọn của thông
+  //Hàm click các lựa chọn của thông báo
   const handleClickAlert = (value) => {
     switch (value) {
       case "to log in": {
@@ -66,6 +66,7 @@ const CourseContent = () => {
         break;
     }
   };
+
   return (
     <div className="course_content">
       <div className="nav_content">

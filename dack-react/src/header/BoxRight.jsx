@@ -58,8 +58,12 @@ const BoxRight = () => {
           {clickIconUser && (
             <ul className="options_user">
               <p className="desc">{userLogged.account.email}</p>
-              <li className="option">Profile</li>
-              <li className="option">My courses</li>
+              <Link to={"/my-profile"} className="option">
+                Profile
+              </Link>
+              <Link to={"/my-courses"} className="option">
+                My courses
+              </Link>
               <Link
                 to={"/register"}
                 className="option"

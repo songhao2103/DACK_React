@@ -32,3 +32,19 @@ export const actionAddCourse = {
   type: "ADDCOURSE",
   payload: {},
 };
+
+//Action update profile
+export const actionUpdateProfile = {
+  type: "UPDATEPROFILE",
+  payload: {},
+};
+
+//Action changeEmail
+export const actionChangeEmail = {
+  type: "CHANGEEMAIL",
+};
+
+//Action changePassword
+export const actionChangePassword = {
+  type: "CHANGEPASSWORD",
+};

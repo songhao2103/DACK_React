@@ -9,14 +9,11 @@ import InfoCoursePage from "./infoCoursePage/InfoCoursePage";
 import Register from "./register/Register";
 import LogIn from "./logIn/LogIn";
 import CheckOut from "./checkOut/CheckOut";
+import ScrollToTop from "./scrollToTop/ScrollToTop";
+import ListMyCourses from "./listMyCourses/ListMyCourses";
+import MyProfilePage from "./myProfile/MyProfilePage";
 
 function App() {
-  //Khởi tạo đổi hoặc đặt lại đối tượng dùng để lưu tài khoản đang đăng nhập về null
-  // useEffect(() => {
-  //   const userLogged = null;
-  //   localStorage.setItem("userLogged", JSON.stringify(userLogged));
-  // }, []);
-
   return (
     <div className="main_content">
       <Header></Header>
@@ -30,7 +27,11 @@ function App() {
         <Route path="/register" element={<Register></Register>} />
         <Route path="/log-in" element={<LogIn></LogIn>} />
         <Route path="/check-out" element={<CheckOut></CheckOut>} />
+        <Route path="/my-courses" element={<ListMyCourses></ListMyCourses>} />
+        <Route path={"my-profile"} element={<MyProfilePage></MyProfilePage>} />
       </Routes>
+      <ScrollToTop></ScrollToTop>
+
       <Footer></Footer>
     </div>
   );

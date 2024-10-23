@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
-import { listDataCourses } from "../listDataCourses";
 import Course from "./Course";
 
 //Component==================================================================
@@ -12,6 +11,7 @@ const ListCourses = () => {
   const list = useRef(null); //lấy element list
   const coursePrice = useSelector((state) => state.coursePrice); //lấy ra trạng thái của các ô input ở phần giá
   const courseInstructors = useSelector((state) => state.courseInstructors); // Lấy ra trạng thái của các ô input phần instructors
+  const listDataCourses = useSelector((state) => state.listDataCourses); // Lấy dữ liệu về danh sách các courses
 
   //lọc course theo instructor
   const filteredInstructorCourses = useMemo(() => {

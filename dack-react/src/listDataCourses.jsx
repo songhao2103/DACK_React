@@ -3,11 +3,32 @@ export const listDataCourses = [
     id: "9614fca8-82c2-48ba-a42f-4eac1fdbab59",
     img: "https://songhao2103.github.io/IMG_du_an_REACT/img_/img_course/Rectangle%20139.png",
     name: "Create an LMS Studio Website with LearnPress",
-    updateTime: new Date("2024-10-09T00:00:00"),
+    updateTime: new Date("2024-10-19T00:00:00"),
     students: 156,
     price: 29,
     sale: 100,
-    lessons: 20,
+    lessons: [
+      {
+        pdf: "/learning_materials/file_PDF/1-toan-de-tham-khao-2024.pdf",
+
+        id: "9614fca8-82c2-48ba-a42f-4eac1fdbab59_lesson1",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/10-tieng-nga-de-tham-khao-2024.pdf",
+
+        id: "9614fca8-82c2-48ba-a42f-4eac1fdbab59_lesson2",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/2-vat-li-de-tham-khao-2024.pdf",
+
+        id: "9614fca8-82c2-48ba-a42f-4eac1fdbab59_lesson3",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/5-ngu-van-de-tham-khao-2024.pdf",
+
+        id: "9614fca8-82c2-48ba-a42f-4eac1fdbab59_lesson4",
+      },
+    ],
     instructor: "Kenny White",
   },
   {
@@ -18,7 +39,24 @@ export const listDataCourses = [
     students: 156,
     price: 33,
     sale: 15,
-    lessons: 20,
+    lessons: [
+      {
+        pdf: "/learning_materials/file_PDF/1-toan-de-tham-khao-2024.pdf",
+        id: "e9899c65-33a6-4737-81cf-f959e64caa37_lesson1",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/10-tieng-nga-de-tham-khao-2024.pdf",
+        id: "e9899c65-33a6-4737-81cf-f959e64caa37_lesson2",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/2-vat-li-de-tham-khao-2024.pdf",
+        id: "e9899c65-33a6-4737-81cf-f959e64caa37_lesson3",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/5-ngu-van-de-tham-khao-2024.pdf",
+        id: "e9899c65-33a6-4737-81cf-f959e64caa37_lesson4",
+      },
+    ],
     instructor: "John Doe",
   },
   {
@@ -29,7 +67,24 @@ export const listDataCourses = [
     students: 156,
     price: 67,
     sale: 60,
-    lessons: 20,
+    lessons: [
+      {
+        pdf: "public/learning_materials/file_PDF/1-toan-de-tham-khao-2024.pdf",
+        id: "b7bb3a31-fd9c-4c02-9a95-aebdcba7e7c1_lesson1",
+      },
+      {
+        pdf: "public/learning_materials/file_PDF/10-tieng-nga-de-tham-khao-2024.pdf",
+        id: "b7bb3a31-fd9c-4c02-9a95-aebdcba7e7c1_lesson2",
+      },
+      {
+        pdf: "public/learning_materials/file_PDF/2-vat-li-de-tham-khao-2024.pdf",
+        id: "b7bb3a31-fd9c-4c02-9a95-aebdcba7e7c1_lesson3",
+      },
+      {
+        pdf: "public/learning_materials/file_PDF/5-ngu-van-de-tham-khao-2024.pdf",
+        id: "b7bb3a31-fd9c-4c02-9a95-aebdcba7e7c1_lesson4",
+      },
+    ],
     instructor: "Kenny White",
   },
   {
@@ -40,18 +95,52 @@ export const listDataCourses = [
     students: 156,
     price: 15,
     sale: 50,
-    lessons: 20,
+    lessons: [
+      {
+        pdf: "/learning_materials/file_PDF/1-toan-de-tham-khao-2024.pdf",
+        id: "866062b3-dd8a-4f48-b215-514f9e9c8231_lesson1",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/10-tieng-nga-de-tham-khao-2024.pdf",
+        id: "866062b3-dd8a-4f48-b215-514f9e9c8231_lesson2",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/2-vat-li-de-tham-khao-2024.pdf",
+        id: "866062b3-dd8a-4f48-b215-514f9e9c8231_lesson3",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/5-ngu-van-de-tham-khao-2024.pdf",
+        id: "866062b3-dd8a-4f48-b215-514f9e9c8231_lesson4",
+      },
+    ],
     instructor: "John Doe",
   },
   {
-    id: "c11c830c-ae9a-49b1-9caf-307fda11745d",
+    id: "c11c830c-ae9-49b1-9caf-307fda11745d",
     img: "https://songhao2103.github.io/IMG_du_an_REACT/img_/img_course/Rectangle%20139%20(4).png",
     name: "Create an LMS Commercial Website with LearnPress",
     updateTime: new Date("2024-10-09T00:00:00"),
     students: 156,
     price: 68,
     sale: 100,
-    lessons: 20,
+    lessons: [
+      {
+        pdf: "/learning_materials/file_PDF/1-toan-de-tham-khao-2024.pdf",
+        id: "c11c830c-ae9-49b1-9caf-307fda11745d_lesson1",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/10-tieng-nga-de-tham-khao-2024.pdf",
+        id: "c11c830c-ae9-49b1-9caf-307fda11745d_lesson2",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/2-vat-li-de-tham-khao-2024.pdf",
+        id: "c11c830c-ae9-49b1-9caf-307fda11745d_lesson3",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/5-ngu-van-de-tham-khao-2024.pdf",
+        id: "c11c830c-ae9-49b1-9caf-307fda11745d_lesson4",
+      },
+    ],
     instructor: "Kenny White",
   },
   {
@@ -60,42 +149,26 @@ export const listDataCourses = [
     name: "Introduction LearnPress – LMS plugin",
     updateTime: new Date("2024-10-09T00:00:00"),
     students: 156,
-    price: 34,
-    sale: 70,
-    lessons: 20,
-    instructor: "John Doe",
-  },
-  {
-    id: "9098a6b4-11f9-49e2-adf7-728144bd29d8",
-    img: "https://songhao2103.github.io/IMG_du_an_REACT/img_/img_course/Rectangle%20139%20(6).png",
-    name: "How to teach an online course",
-    updateTime: new Date("2024-10-09T00:00:00"),
-    students: 156,
-    price: 40,
-    sale: 90,
-    lessons: 20,
-    instructor: "Kenny White",
-  },
-  {
-    id: "11fb2955-8c8d-46ac-a6ba-41901f985ca1",
-    img: "https://songhao2103.github.io/IMG_du_an_REACT/img_/img_course/Rectangle%20139%20(7).png",
-    name: "How to Create An University Online Course",
-    updateTime: new Date("2024-10-09T00:00:00"),
-    students: 156,
-    price: 32,
-    sale: 95,
-    lessons: 20,
-    instructor: "Kenny White",
-  },
-  {
-    id: "796d1231-c938-4b44-a2ab-424a93b593be",
-    img: "https://songhao2103.github.io/IMG_du_an_REACT/img_/img_course/Rectangle%20139%20(8).png",
-    name: "Introduction University to LearnPress: Building your Learning Management System",
-    updateTime: new Date("2024-10-09T00:00:00"),
-    students: 156,
-    price: 45,
-    sale: 50,
-    lessons: 20,
+    price: 0,
+    sale: 100,
+    lessons: [
+      {
+        pdf: "/learning_materials/file_PDF/1-toan-de-tham-khao-2024.pdf",
+        id: "b245ea27-c0ef-4d8e-84d5-a992030833a3_lesson1",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/10-tieng-nga-de-tham-khao-2024.pdf",
+        id: "b245ea27-c0ef-4d8e-84d5-a992030833a3_lesson2",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/2-vat-li-de-tham-khao-2024.pdf",
+        id: "b245ea27-c0ef-4d8e-84d5-a992030833a3_lesson3",
+      },
+      {
+        pdf: "/learning_materials/file_PDF/5-ngu-van-de-tham-khao-2024.pdf",
+        id: "b245ea27-c0ef-4d8e-84d5-a992030833a3_lesson4",
+      },
+    ],
     instructor: "John Doe",
   },
 ];

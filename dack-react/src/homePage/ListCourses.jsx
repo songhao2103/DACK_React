@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionCourseViewed } from "../redux-store/actions/actions";
-import { listDataCourses } from "../listDataCourses";
 import Course from "./Course";
 
 const ListCourses = () => {
   const [clickAllCourses, setClickAllCourses] = useState(false); // lưu trạng thái của nút xem tất cả courses
   const dispath = useDispatch();
+  const listDataCourses = useSelector((state) => state.listDataCourses);
 
   //Hàm xử lí khi click vào view all
   const handleClickAllCourses = () => {

@@ -7,35 +7,30 @@
     margin-bottom: 36px;
   }
 
-  .list_chapter {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-    .chapter {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
+  .list_lessons {
+    .lesson {
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ccc;
 
       .title_h5 {
-        color: $Black;
-        font-family: Exo;
-        font-size: 1.6rem;
-        font-style: normal;
-        font-weight: 600;
-        line-height: 120%; /* 19.2px */
-        text-transform: capitalize;
-      }
+        @include title_h5;
+        cursor: pointer;
+        margin-bottom: 5px;
 
-      .right {
-        display: flex;
-        gap: 20px;
-      }
-
-      &:hover {
-        .title_h5 {
+        &:hover {
           color: $Primary;
+        }
+      }
+    }
+
+    .box_file {
+      .desc {
+        @include desc_gray;
+        cursor: pointer;
+        padding: 5px 10px;
+
+        &:hover {
+          color: red;
         }
       }
     }
