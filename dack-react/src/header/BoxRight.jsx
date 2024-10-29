@@ -64,6 +64,12 @@ const BoxRight = () => {
               <Link to={"/my-courses"} className="option">
                 My courses
               </Link>
+              {userLogged.account.id === "admin" && (
+                <Link to={"/list-courses-of-page"} className="option">
+                  List courses of page
+                </Link>
+              )}
+
               <Link
                 to={"/register"}
                 className="option"

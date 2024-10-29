@@ -1,6 +1,6 @@
-const MyCourse = ({ course }) => {
+const MyCourse = ({ course, handleClickCourse }) => {
   return (
-    <div className="my_course">
+    <div className="my_course" onClick={() => handleClickCourse(course)}>
       <div className="image">
         <img src={course.img} alt="" />
       </div>
@@ -18,7 +18,7 @@ const MyCourse = ({ course }) => {
             <div className="icon">
               <i className="fa-solid fa-clipboard"></i>
             </div>
-            <p className="desc">{course.lessons} Lessons</p>
+            <p className="desc">{course.lessons.length} Lessons</p>
           </div>
         </div>
       </div>

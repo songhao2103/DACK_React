@@ -1,6 +1,11 @@
-import { useState } from "react";
-
-const Course = ({ course }) => {
+const Course = ({
+  course,
+  handleDeleteCourse,
+  handleHiddenBoxAddCourse,
+  hiddenChoose,
+  handleChangeInputCheckbox,
+  checked,
+}) => {
   //Tính khoảng thời gian đã update lại hoặc thêm mới course
   const updateTimed =
     (Date.now() - new Date(course.updateTime).getTime()) / 1000; // Tính ra số giây đã update
@@ -30,9 +35,20 @@ const Course = ({ course }) => {
   const displayPrice = ((course.price * (100 - course.sale)) / 100).toFixed(1);
 
   return (
-    <div className="course">
+    <div className="course_admin">
       <div className="image">
         <img src={course.img} alt="" />
+        <div className="option">
+          <p className="desc" onClick={() => handleDeleteCourse(course.id)}>
+            Erase course
+          </p>
+          <p
+            className="desc"
+            onClick={() => handleHiddenBoxAddCourse("update", course.id)}
+          >
+            Edit informaiton
+          </p>
+        </div>
       </div>
       <div className="content">
         <p className="desc">
@@ -71,6 +87,15 @@ const Course = ({ course }) => {
           <p className="view_course desc">View More</p>
         </div>
       </div>
+      {hiddenChoose && (
+        <div className="choose">
+          <input
+            type="checkbox"
+            onChange={handleChangeInputCheckbox}
+            checked={checked}
+          />
+        </div>
+      )}
     </div>
   );
 };

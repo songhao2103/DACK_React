@@ -26,6 +26,8 @@ const changeEmailReducer = (state, action) => {
     }
 
     case "SUBMIT": {
+      // eslint-disable-next-line no-debugger
+      debugger;
       const { email, password } = state.formData;
       const newCheckError = { ...state.checkError };
       const newTextError = { ...state.textError };
@@ -113,6 +115,8 @@ const ChangeEmail = () => {
 
   //Hàm xử lý submit
   const handleSubmit = (e) => {
+    // eslint-disable-next-line no-debugger
+    debugger;
     e.preventDefault();
     dispatch({
       type: "SUBMIT",

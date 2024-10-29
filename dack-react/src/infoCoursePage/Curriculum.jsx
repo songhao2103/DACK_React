@@ -32,7 +32,7 @@ const Curriculum = () => {
             </p>
             {hiddenFile[index] && (
               <div className="box_file">
-                <p className="desc">{lesson.pdf.slice(29)}</p>
+                <p className="desc">{lesson.name}</p>
               </div>
             )}
           </div>

@@ -12,8 +12,22 @@ import CheckOut from "./checkOut/CheckOut";
 import ScrollToTop from "./scrollToTop/ScrollToTop";
 import ListMyCourses from "./listMyCourses/ListMyCourses";
 import MyProfilePage from "./myProfile/MyProfilePage";
+import MyCourseContent from "./myCourseContent/MyCourseContent";
+import ListCoursesOfPage from "./listCoursesOfPage/ListCoursesOfPage";
 
 function App() {
+  const listUsers = JSON.parse(localStorage.getItem("listUsers"));
+  if (!listUsers) {
+    const newListUsers = [
+      { account: { email: "admin", password: "123456", id: "admin" } },
+      {
+        account: { email: "kennyWhite", password: "123456", id: "kennyWhite" },
+      },
+      { account: { email: "johnDoe", password: "123456", id: "johnDoe" } },
+    ];
+    localStorage.setItem("listUsers", JSON.stringify(newListUsers));
+  }
+
   return (
     <div className="main_content">
       <Header></Header>
@@ -29,9 +43,16 @@ function App() {
         <Route path="/check-out" element={<CheckOut></CheckOut>} />
         <Route path="/my-courses" element={<ListMyCourses></ListMyCourses>} />
         <Route path={"my-profile"} element={<MyProfilePage></MyProfilePage>} />
+        <Route
+          path={"/course-content"}
+          element={<MyCourseContent></MyCourseContent>}
+        />
+        <Route
+          path="/list-courses-of-page"
+          element={<ListCoursesOfPage></ListCoursesOfPage>}
+        />
       </Routes>
       <ScrollToTop></ScrollToTop>
-
       <Footer></Footer>
     </div>
   );

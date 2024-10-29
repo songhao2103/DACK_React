@@ -48,3 +48,38 @@ export const actionChangeEmail = {
 export const actionChangePassword = {
   type: "CHANGEPASSWORD",
 };
+
+//Action xử lý click xem nội dung các bài học của course
+export const actionViewContentCourse = {
+  type: "VIEWCONTENTCOURSE",
+};
+
+//Action xử lý upload file
+export const actionUploadFile = {
+  type: "UPLOADFILE",
+};
+
+//Action add course
+export const actionAdminAddCourse = {
+  type: "ADMINADDCOURSE",
+};
+
+//Action delete course
+export const actionAdminDeleteCourse = {
+  type: "ADMINDELETECOURSE",
+};
+
+//action admin update course
+export const actionAdminUpdateCourse = {
+  type: "ADMINUPDATECOURSE",
+};
+
+//action admin update nhiều courses cùng 1 lúc
+export const actionAminUpdateListCourses = {
+  type: "ADMINUPDATELISTCOURSE",
+};
+
+//action khi admin xóa toàn bộ courses được chọn
+export const actionAdminDeleteAllSelectedCourses = {
+  type: "ADMINDELETEALLSELECTEDCOURSES",
+};
