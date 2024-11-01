@@ -1,7 +1,9 @@
 //khởi tạo state
 import { listDataCourses } from "../../listDataCourses";
+import { listCommentCourses } from "../../listCommentCourses";
 const initialState = {
   listDataCourses: listDataCourses,
+  listCommentCourses: listCommentCourses,
   courseViewed: {}, //Lưu course khi xem thông tin của course
 
   //lưu trạng thái của option price ở trang coursesPage

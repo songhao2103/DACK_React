@@ -46,4 +46,45 @@
       }
     }
   }
+
+  .write_comment {
+    .title_h5 {
+      @include title_h5;
+    }
+    textarea {
+      width: 100%;
+      overflow: hidden;
+      resize: none;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      padding: 10px;
+      outline: none;
+
+      &:focus {
+        // border: none;
+        border-bottom: 2px solid #000;
+      }
+    }
+
+    .bottom {
+      .btn_confirm {
+        padding: 4px 15px;
+        @include desc_gray;
+        color: #ccc;
+        font-size: 1.6rem;
+        border-radius: 25px;
+        float: right;
+        margin-top: 10px;
+      }
+
+      .btn_confirm.active {
+        background-color: $Primary;
+        color: white;
+
+        &:active {
+          transform: scale(0.97);
+        }
+      }
+    }
+  }
 }

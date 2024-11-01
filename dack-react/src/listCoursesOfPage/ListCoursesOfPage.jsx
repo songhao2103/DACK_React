@@ -33,8 +33,15 @@ const initialState = {
 
   //hidden losts of editing
   hiddenLostsOfEditing: false,
+
   //Các khóa học được chọn
   listSelectedCourses: [],
+
+  //Lưu trữ giá trị sau khi debounce
+  debounceSearch: "",
+
+  //lưu giá trị của value input search
+  valueInputSearch: "",
 };
 
 const reducer = (state, action) => {
@@ -105,6 +112,11 @@ const reducer = (state, action) => {
     case "HIDDENCHECKBOX":
       return { ...state, hiddenChoose: !state.hiddenChoose };
 
+    //Xử lý chọn tất cacr các courses
+    case "CHOOSEALLCOURSES": {
+      const newListChecked = state.listChecked.fill(true);
+      return { ...state, listChecked: newListChecked };
+    }
     //xử lý lưu giá trị của các ô input checkbox
     case "CHANGEINPUTCHECKBOX": {
       const newListChecked = state.listChecked.map((item, index) =>
@@ -163,6 +175,31 @@ const reducer = (state, action) => {
           (b.price * (100 - b.sale)) / 100 - (a.price * (100 - a.sale)) / 100
       );
       return { ...state, listDataCoursesFiltered: newListDataCourses };
+    }
+
+    //Xử lý thay đổi của input search
+    case "CHANGEINPUTSEARCH": {
+      return { ...state, valueInputSearch: action.payload.value };
+    }
+
+    //xử lý cập nhật giá trị của debounce search mỗi khi có sự thay đổi
+    case "SETVALUEDEBOUNCE": {
+      return { ...state, debounceSearch: action.payload.valueInputSearch };
+    }
+
+    //xử lý thực hiện tìm kiếm ở ô input search
+    case "SEARCHCOURSES": {
+      const newListDataCoursesFiltered = action.payload.debounceSearch
+        ? state.listDataCourses.filter((course) =>
+            course.name
+              .toLowerCase()
+              .includes(action.payload.debounceSearch.toLowerCase())
+          )
+        : state.listDataCourses;
+
+      console.log(action.payload.debounceSearch);
+
+      return { ...state, listDataCoursesFiltered: newListDataCoursesFiltered };
     }
 
     default:
@@ -267,6 +304,12 @@ const ListCoursesOfPage = () => {
     });
   };
 
+  //Hàm xử lý để chọn tất cả các course
+  const handleChooseAllCourses = () => {
+    dispatch({
+      type: "CHOOSEALLCOURSES",
+    });
+  };
   //Hàm click confirm để xác nhận chọn các course
   const handleClickConfirm = () => {
     dispatch({
@@ -308,7 +351,44 @@ const ListCoursesOfPage = () => {
       type: "INCREASEPRICE",
     });
   };
-  
+
+  //hàm xử lý thay đổi giá trị của ô input search
+  const handleChangeInputSearch = (e) => {
+    dispatch({
+      type: "CHANGEINPUTSEARCH",
+      payload: {
+        value: e.target.value,
+      },
+    });
+  };
+
+  //Mỗi khi người dùng nhập hay value input search thay đổi thì đặt lại debounce search
+  useEffect(() => {
+    const timerID = setTimeout(() => {
+      dispatch({
+        type: "SETVALUEDEBOUNCE",
+        payload: {
+          valueInputSearch: state.valueInputSearch,
+        },
+      });
+    }, 1000);
+
+    //xóa timerId nếu người dùng tiếp tục nhập
+    return () => {
+      clearTimeout(timerID);
+    };
+  }, [state.valueInputSearch]);
+
+  //Thực hiện tìm kiếm ở ô input
+  useEffect(() => {
+    dispatch({
+      type: "SEARCHCOURSES",
+      payload: {
+        debounceSearch: state.debounceSearch,
+      },
+    });
+  }, [state.debounceSearch]);
+
   return (
     <div className="list_courses_of_page">
       <div className="nav_bar">
@@ -322,6 +402,18 @@ const ListCoursesOfPage = () => {
           <li className="item desc" onClick={handleHiddenCheckbox}>
             Choose multiple
           </li>
+          {state.hiddenChoose && (
+            <li className="item desc" onClick={handleChooseAllCourses}>
+              Choose all
+            </li>
+          )}
+
+          {state.listChecked.some((item) => item) &&
+            !state.hiddenLostsOfEditing && (
+              <li className="item desc" onClick={handleClickConfirm}>
+                Confirm
+              </li>
+            )}
           <li className="filter">
             <p className="desc">Filter</p>
             <ul className="box_option">
@@ -339,87 +431,88 @@ const ListCoursesOfPage = () => {
               </li>
             </ul>
           </li>
-          {state.listChecked.some((item) => item) &&
-            !state.hiddenLostsOfEditing && (
-              <li className="item desc" onClick={handleClickConfirm}>
-                Confirm
-              </li>
-            )}
         </ul>
         <div className="search">
-          <input type="text" placeholder="Search course" />
+          <input
+            type="text"
+            placeholder="Search course"
+            onChange={handleChangeInputSearch}
+            value={state.valueInputSearch}
+          />
         </div>
       </div>
 
       {/* add_courses */}
       {(state.hiddenAddCourse === "add" ||
         state.hiddenAddCourse === "update") && (
-        <form action="" className="add_course">
-          <div className="item">
-            <label htmlFor="img">Upload avatar:</label>
-            <input
-              type="file"
-              name="img"
-              id="img"
-              onChange={handleChangeAddData}
-              value=""
-            />
-          </div>
-          <div className="item">
-            <label htmlFor="name">Course name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              onChange={handleChangeAddData}
-              value={state.formData.name}
-            />
-          </div>
-          <div className="item">
-            <label htmlFor="price">Course price:</label>
-            <input
-              type="text"
-              id="price"
-              name="price"
-              onChange={handleChangeAddData}
-              value={state.formData.price}
-            />
-          </div>
-          <div className="item">
-            <label htmlFor="sale">Discount:</label>
-            <input
-              type="text"
-              id="sale"
-              name="sale"
-              onChange={handleChangeAddData}
-              value={state.formData.sale}
-            />
-          </div>
-          <div className="item">
-            <label htmlFor="instructor">Course instructor:</label>
-            <input
-              type="text"
-              id="instructor"
-              name="instructor"
-              onChange={handleChangeAddData}
-              value={state.formData.instructor}
-            />
-          </div>
-          {state.hiddenAddCourse === "add" && (
-            <button className="btn_primary" onClick={handleClickAddCourse}>
-              Add Course
-            </button>
-          )}
-          {state.hiddenAddCourse === "update" && (
-            <button className="btn_primary" onClick={handleUpdateInformation}>
-              Update Course
-            </button>
-          )}
+        <div className="box_add_course">
+          <form action="" className="add_course">
+            <div className="item">
+              <label htmlFor="img">Upload avatar:</label>
+              <input
+                type="file"
+                name="img"
+                id="img"
+                onChange={handleChangeAddData}
+                value=""
+              />
+            </div>
+            <div className="item">
+              <label htmlFor="name">Course name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                onChange={handleChangeAddData}
+                value={state.formData.name}
+              />
+            </div>
+            <div className="item">
+              <label htmlFor="price">Course price:</label>
+              <input
+                type="text"
+                id="price"
+                name="price"
+                onChange={handleChangeAddData}
+                value={state.formData.price}
+              />
+            </div>
+            <div className="item">
+              <label htmlFor="sale">Discount:</label>
+              <input
+                type="text"
+                id="sale"
+                name="sale"
+                onChange={handleChangeAddData}
+                value={state.formData.sale}
+              />
+            </div>
+            <div className="item">
+              <label htmlFor="instructor">Course instructor:</label>
+              <input
+                type="text"
+                id="instructor"
+                name="instructor"
+                onChange={handleChangeAddData}
+                value={state.formData.instructor}
+              />
+            </div>
+            {state.hiddenAddCourse === "add" && (
+              <button className="btn_primary" onClick={handleClickAddCourse}>
+                Add Course
+              </button>
+            )}
+            {state.hiddenAddCourse === "update" && (
+              <button className="btn_primary" onClick={handleUpdateInformation}>
+                Update Course
+              </button>
+            )}
 
-          <p className="close" onClick={() => handleHiddenBoxAddCourse("")}>
-            x
-          </p>
-        </form>
+            <p className="close" onClick={() => handleHiddenBoxAddCourse("")}>
+              x
+            </p>
+          </form>
+        </div>
       )}
 
       {state.hiddenLostsOfEditing && (

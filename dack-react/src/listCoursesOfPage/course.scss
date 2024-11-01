@@ -13,6 +13,12 @@
     width: 410px;
     height: 250px;
 
+    img {
+      height: 250px;
+      width: 410px;
+      border-radius: 20px;
+    }
+
     .option {
       display: flex;
       justify-content: space-between;

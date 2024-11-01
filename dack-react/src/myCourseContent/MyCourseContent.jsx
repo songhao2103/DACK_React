@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Worker, Viewer } from "@react-pdf-viewer/core";
 import { actionUploadFile } from "../redux-store/actions/actions";
+import config from "../../../config";
 
 const MyCourseContent = () => {
   const dataCourseFromRedux = useSelector((state) => state.courseViewed); //lấy dữ liệu về course đang được xem
@@ -63,12 +64,12 @@ const MyCourseContent = () => {
   }, [fileAdded]);
 
   //Hàm xử lý khi click vào confirm
-  const handleClickConfirm = () => {
+  const handleClickConfirm = async () => {
     setHiddenBoxUpload(false);
     if (fileAdded instanceof File) {
       const newLesson = {
         pdf: fileUrl,
-        id: `${dataCourse.id}_lesson${dataCourse.lessons.length + 1}`,
+        // id: `${dataCourse.id}_lesson${dataCourse.lessons.length + 1}`,
         name: nameLesson,
       };
 
@@ -76,6 +77,17 @@ const MyCourseContent = () => {
         ...dataCourse,
         lessons: [...dataCourse.lessons, newLesson],
       };
+
+      let res = await fetch(config.endpoint + "Lesson", {
+        method: "POST",
+        body: JSON.stringify(newLesson),
+        headers: {
+          "Content-Type": "application/json", // Setting Content-Type for JSON data
+        },
+      });
+
+      console.log(await res.json());
+
       setDataCourse(updatedDataCourse);
 
       dispatch({
@@ -87,8 +99,6 @@ const MyCourseContent = () => {
     }
   };
 
-  console.log("coursesRedux", dataCourseFromRedux);
-  console.log("dataCourse", dataCourse);
   return (
     <div className="my_course_content">
       <div className="title_h2">{dataCourse.name}</div>
